@@ -1,9 +1,25 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+
+import "@testing-library/jest-dom";
+import { screen } from "@testing-library/react";
+
+import renderWithRouter from "./utils/testing/render";
+
 import App from "./App";
 
-test("renders 'hello world'", () => {
-  render(<App />);
-  const headingElement = screen.getByText(/hello world/i);
-  expect(headingElement).toBeInTheDocument();
+describe("Routes should be rendered properly", () => {
+  it("Login Page", () => {
+    renderWithRouter(<App />, { route: "/login" });
+    expect(screen.getByRole("heading")).toHaveTextContent(/Login/i);
+  });
+
+  it("Sign Up Page", () => {
+    renderWithRouter(<App />, { route: "/signup" });
+    expect(screen.getByRole("heading")).toHaveTextContent(/signup/i);
+  });
+
+  it("Not Found Page", () => {
+    renderWithRouter(<App />, { route: "/badroute" });
+    expect(screen.getByText(/Page Not Found/i)).toBeInTheDocument();
+  });
 });
