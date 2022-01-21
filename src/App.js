@@ -5,8 +5,15 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
+import NavBar from "./components/layout/navigation/NavBar/NavBar";
+
 const App = () => {
-  return <h1>Hello World!</h1>;
+  return (
+    <>
+      <NavBar />
+      <h1>Hello World!</h1>
+    </>
+  );
 };
 
 export default App;
