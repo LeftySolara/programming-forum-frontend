@@ -1,24 +1,19 @@
 import React, { useState } from "react";
-
 import { useWindowWidth } from "@react-hook/window-size";
 
 import {
   AppBar,
   Box,
-  Button,
   CssBaseline,
   Drawer,
   IconButton,
   List,
-  ListItem,
   Toolbar,
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-// TODO: Make these into links once routing is implemented
-const LoginButton = <Button color="inherit">Log In</Button>;
-const SignUpButton = <Button color="inherit">Sign Up</Button>;
+import NavBarLink from "./NavBarLink";
 
 /**
  * A responsive navigation bar. On mobile, navigation buttons are
@@ -31,21 +26,25 @@ const NavBar = () => {
   const windowWidth = useWindowWidth();
   const isMobile = windowWidth < 768;
 
-  const handleDrawerToggle = () => {
-    setDrawerIsOpen(!drawerIsOpen);
-  };
+  const navBarLinks = (
+    <>
+      <NavBarLink primary="Sign Up" to="/signup" />
+      <NavBarLink primary="Log In" to="/login" />
+    </>
+  );
 
   const drawer = (
     <div>
-      <List>
-        <ListItem>{SignUpButton}</ListItem>
-        <ListItem>{LoginButton}</ListItem>
-      </List>
+      <List>{navBarLinks}</List>
     </div>
   );
 
   const container =
     window !== undefined ? () => window.document.body : undefined;
+
+  const handleDrawerToggle = () => {
+    setDrawerIsOpen(!drawerIsOpen);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -67,8 +66,13 @@ const NavBar = () => {
           <Typography variant="h6" component="h1" sx={{ flexGrow: 1 }}>
             SegmentationFault
           </Typography>
-          {!isMobile && SignUpButton}
-          {!isMobile && LoginButton}
+          {!isMobile && (
+            <List
+              sx={{ display: "flex", flexDirection: "row", width: "180px" }}
+            >
+              {navBarLinks}
+            </List>
+          )}
         </Toolbar>
       </AppBar>
       <Box component="nav" sx={{ width: { sm: 120 }, flexShrink: { sm: 0 } }}>

@@ -1,27 +1,36 @@
 import React from "react";
 
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-import NavBar from "./NavBar";
+import renderWithRouter from "../../../../utils/testing/render";
 
-describe("The navbar should display buttons and a 'logo'", () => {
+import App from "../../../../App";
+
+describe("The navbar should display links and a 'logo'", () => {
   it("Should display the app name", () => {
-    render(<NavBar />);
+    renderWithRouter(<App />);
     expect(screen.getByText(/SegmentationFault/i)).toBeInTheDocument();
   });
 
-  it("Should display a link to the login page", () => {
-    render(<NavBar />);
-    // TODO: Check for href once routing is implemented
-    // expect(screen.getByText(/Log In/i)).toHaveAttribute("href", "/login");
-    expect(screen.getByText(/Log In/)).toBeInTheDocument();
+  it("Should display a functioning link to the login page", () => {
+    renderWithRouter(<App />);
+    expect(screen.getByText(/Log In/i)).toBeInTheDocument();
+
+    const leftClick = { button: 0 };
+    userEvent.click(screen.getByText(/Log In/i), leftClick);
+
+    expect(screen.getByText(/Login/i)).toBeInTheDocument();
   });
 
-  it("Should display a link to the signup page", () => {
-    render(<NavBar />);
-    // TODO: Check for href once routing is implemented
-    // expect(screen.getByText(/Sign Up/i)).toHaveAttribute("href", "/signup");
-    expect(screen.getByText(/Sign Up/)).toBeInTheDocument();
+  it("Should display a functioning link to the signup page", () => {
+    renderWithRouter(<App />);
+    expect(screen.getByText(/Sign Up/i)).toBeInTheDocument();
+
+    const leftClick = { button: 0 };
+    userEvent.click(screen.getByText(/Sign Up/i), leftClick);
+
+    expect(screen.getByText(/Signup/i)).toBeInTheDocument();
   });
 });
