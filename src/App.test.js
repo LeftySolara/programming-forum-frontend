@@ -10,12 +10,12 @@ import App from "./App";
 describe("Routes should be rendered properly", () => {
   it("Login Page", () => {
     renderWithRouter(<App />, { route: "/login" });
-    expect(screen.getByRole("heading")).toHaveTextContent(/Login/i);
+    expect(screen.getByText(/Login/i)).toBeInTheDocument();
   });
 
   it("Sign Up Page", () => {
     renderWithRouter(<App />, { route: "/signup" });
-    expect(screen.getByRole("heading")).toHaveTextContent(/signup/i);
+    expect(screen.getByText(/Signup/i)).toBeInTheDocument();
   });
 
   it("Not Found Page", () => {
