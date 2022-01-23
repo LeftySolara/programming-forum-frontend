@@ -6,6 +6,10 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
+import { ThemeProvider } from "@mui/material";
+
+import theme from "./context/theme/theme";
+
 import NavBar from "./components/layout/navigation/NavBar/NavBar";
 
 import HomePage from "./views/Home/HomePage/HomePage";
@@ -16,13 +20,15 @@ import NotFoundPage from "./views/NotFound/NotFoundPage/NotFoundPage";
 const App = () => {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/signup" component={SignupPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <ThemeProvider theme={theme}>
+        <NavBar />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={SignupPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </ThemeProvider>
     </BrowserRouter>
   );
 };
