@@ -16,6 +16,7 @@ import HomePage from "./views/Home/HomePage/HomePage";
 import LoginPage from "./views/Auth/Login/LoginPage/LoginPage";
 import SignupPage from "./views/Auth/Signup/SignupPage/SignupPage";
 import NotFoundPage from "./views/NotFound/NotFoundPage/NotFoundPage";
+import CreateBoardCategoryPage from "./views/Admin/CreateBoardCategory/CreateBoardCategoryPage";
 
 const App = () => {
   return (
@@ -26,6 +27,10 @@ const App = () => {
           <Route exact path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
+          <Route
+            path="/admin/boardCategory/create"
+            component={CreateBoardCategoryPage}
+          />
           <Route component={NotFoundPage} />
         </Switch>
       </ThemeProvider>
