@@ -1,6 +1,8 @@
 import { Button, TextField } from "@mui/material";
 import React from "react";
 
+import * as S from "./CreateBoardCategoryForm.styles";
+
 const CreateBoardCategoryForm = (props) => {
   const { onSubmit } = props;
 
@@ -10,9 +12,8 @@ const CreateBoardCategoryForm = (props) => {
   };
 
   return (
-    <form
+    <S.Form
       autoComplete="off"
-      noValidate
       onSubmit={handleSubmit}
       data-testid="create-category-form"
     >
@@ -23,12 +24,12 @@ const CreateBoardCategoryForm = (props) => {
         name="topic"
         variant="outlined"
         required
-        inputProps={{ "data-testid": "topic" }}
+        inputProps={{ "data-testid": "topic", "aria-required": "true" }}
       />
-      <Button type="submit" variant="contained">
+      <Button type="submit" variant="contained" sx={{ width: "20%" }}>
         Submit
       </Button>
-    </form>
+    </S.Form>
   );
 };
 
