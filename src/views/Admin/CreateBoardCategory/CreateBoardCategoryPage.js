@@ -1,6 +1,6 @@
 import React from "react";
 
-import createBoardCategory from "api/services/boardCategories";
+import { createBoardCategory } from "api/services/boardCategories";
 import CreateBoardCategoryForm from "./CreateBoardCategoryForm";
 
 import * as S from "./CreateBoardCategoryPage.styles";
