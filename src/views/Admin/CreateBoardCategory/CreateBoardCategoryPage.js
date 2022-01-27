@@ -3,7 +3,7 @@ import CreateBoardCategoryForm from "./CreateBoardCategoryForm";
 
 import * as S from "./CreateBoardCategoryPage.styles";
 
-import createBoardCategory from "../../../services/api/boardCategories";
+import createBoardCategory from "../../../api/services/boardCategories";
 
 const CreateBoardCategoryPage = () => {
   return (
