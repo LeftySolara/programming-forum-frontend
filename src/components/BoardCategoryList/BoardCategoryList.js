@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { getBoardCategories } from "api/services/boardCategories";
+import React from "react";
+
+import useAxios from "hooks/useAxios";
 
 const BoardCategoryList = () => {
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    getBoardCategories().then((data) => {
-      setCategories(data);
-    });
-  }, []);
+  const { response, error, loading } = useAxios({
+    method: "GET",
+    url: "/boardCategories",
+  });
 
   return (
-    <ul>
-      {categories.map((cat) => (
-        <li key={cat._id}>{cat.topic}</li>
-      ))}
-    </ul>
+    <div>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          {error && error.message}
+          {response &&
+            response.map((cat) => <div key={cat._id}>{cat.topic}</div>)}
+        </div>
+      )}
+    </div>
   );
 };
 

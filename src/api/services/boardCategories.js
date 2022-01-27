@@ -4,7 +4,7 @@ const getBoardCategories = () => {
   return axiosClient
     .get("/boardCategories")
     .then((response) => response.data.boardCategories)
-    .catch((err) => console.log(err));
+    .catch((err) => err);
 };
 
 const createBoardCategory = (topic) => {
