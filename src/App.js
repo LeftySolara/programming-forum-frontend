@@ -16,6 +16,7 @@ import HomePage from "./views/Home/HomePage/HomePage";
 import LoginPage from "./views/Auth/Login/LoginPage/LoginPage";
 import SignupPage from "./views/Auth/Signup/SignupPage/SignupPage";
 import NotFoundPage from "./views/NotFound/NotFoundPage/NotFoundPage";
+import CreateBoardPage from "./views/Admin/CreateBoard/CreateBoardPage";
 import CreateBoardCategoryPage from "./views/Admin/CreateBoardCategory/CreateBoardCategoryPage";
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
             path="/admin/boardCategory/create"
             component={CreateBoardCategoryPage}
           />
+          <Route path="/admin/board/create" component={CreateBoardPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </ThemeProvider>
