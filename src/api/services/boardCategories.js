@@ -1,4 +1,4 @@
-import axiosClient from "../axios";
+import axiosClient from "api/axios";
 
 const createBoardCategory = (topic) => {
   // TODO: implement actual error handling

@@ -30,4 +30,12 @@ module.exports = {
     "no-underscore-dangle": "off",
     quotes: [2, "double"],
   },
+  settings: {
+    "import/resolver": {
+      node: {
+        paths: ["src"],
+        extensions: [".js", ".jsx"],
+      },
+    },
+  },
 };
