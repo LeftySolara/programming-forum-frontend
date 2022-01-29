@@ -15,6 +15,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import NavBarLink from "./NavBarLink";
 
+import * as S from "./NavBar.styles";
+
 /**
  * A responsive navigation bar. On mobile, navigation buttons are
  * replaced with a menu drawer.
@@ -64,7 +66,7 @@ const NavBar = () => {
             </IconButton>
           )}
           <Typography variant="h6" component="h1" sx={{ flexGrow: 1 }}>
-            SegmentationFault
+            <S.StyledLink to="/">SegmentationFault</S.StyledLink>
           </Typography>
           {!isMobile && (
             <List
