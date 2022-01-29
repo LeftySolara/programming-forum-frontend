@@ -12,11 +12,11 @@ import theme from "./context/theme/theme";
 
 import NavBar from "./components/layout/navigation/NavBar/NavBar";
 
-import HomePage from "./views/Home/HomePage/HomePage";
-import LoginPage from "./views/Auth/Login/LoginPage/LoginPage";
-import SignupPage from "./views/Auth/Signup/SignupPage/SignupPage";
-import NotFoundPage from "./views/NotFound/NotFoundPage/NotFoundPage";
-import CreateBoardCategoryPage from "./views/Admin/CreateBoardCategory/CreateBoardCategoryPage";
+import HomePage from "./pages/Home/HomePage";
+import LoginPage from "./pages/Login/LoginPage";
+import SignupPage from "./pages/Signup/SignupPage";
+import NotFoundPage from "./pages/NotFound/NotFoundPage";
+import CreateBoardCategoryPage from "./pages/CreateBoardCategory/CreateBoardCategoryPage";
 
 const App = () => {
   return (
