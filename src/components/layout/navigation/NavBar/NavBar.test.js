@@ -14,6 +14,15 @@ describe("The navbar should display links and a 'logo'", () => {
     expect(screen.getByText(/SegmentationFault/i)).toBeInTheDocument();
   });
 
+  it("Should render the app title as a link to the home page", () => {
+    renderWithRouter(<App />, { route: "/login" });
+
+    const leftClick = { button: 0 };
+    userEvent.click(screen.getByText(/SegmentationFault/i), leftClick);
+
+    expect(screen.getByText(/Home/i)).toBeInTheDocument();
+  });
+
   it("Should display a functioning link to the login page", () => {
     renderWithRouter(<App />);
     expect(screen.getByText(/Log In/i)).toBeInTheDocument();
