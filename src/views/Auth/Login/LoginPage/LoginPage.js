@@ -1,7 +1,15 @@
 import React from "react";
 
+import LoginForm from "views/Auth/Login/LoginForm/LoginForm";
+
+import * as S from "./LoginPage.styles";
+
 const LoginPage = () => {
-  return <h1>Login</h1>;
+  return (
+    <S.PageContainer>
+      <LoginForm />
+    </S.PageContainer>
+  );
 };
 
 export default LoginPage;
