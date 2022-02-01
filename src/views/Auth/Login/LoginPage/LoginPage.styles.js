@@ -5,7 +5,7 @@ const PageContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: space-evenly;
   align-items: center;
-  height: 100%;
+  height: 500px;
   width: 100%;
   padding: 100px 0 0 0;
 `;
