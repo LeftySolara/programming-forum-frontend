@@ -32,7 +32,7 @@ const SignupForm = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <Typography variant="h2" component="h1">
-        Sign Up
+        Signup
       </Typography>
       <S.Form onSubmit={handleSubmit}>
         <TextField
