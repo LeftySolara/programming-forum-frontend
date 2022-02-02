@@ -4,6 +4,8 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 
 import registerUser from "api/services/auth";
 
+import * as S from "./SignupForm.styles";
+
 const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -28,11 +30,11 @@ const SignupForm = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <Typography variant="h2" component="h1">
         Sign Up
       </Typography>
-      <form onSubmit={handleSubmit}>
+      <S.Form onSubmit={handleSubmit}>
         <TextField
           type="text"
           id="username-input"
@@ -66,7 +68,7 @@ const SignupForm = () => {
         <TextField
           type="password"
           id="confirm-password-input"
-          label="confirm-password"
+          label="confirm password"
           variant="standard"
           required
           inputProps={{
@@ -79,7 +81,7 @@ const SignupForm = () => {
         <Button type="submit" variant="contained" sx={{ width: "20%" }}>
           Submit
         </Button>
-      </form>
+      </S.Form>
       {error && error}
     </Box>
   );
