@@ -8,10 +8,12 @@ import {
   MenuItem,
   Select,
   TextField,
+  Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
 
 import useAxios from "hooks/useAxios";
+import createBoard from "api/services/board";
 
 import * as S from "./CreateBoardForm.styles";
 
@@ -20,17 +22,38 @@ const CreateBoardForm = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [categoryOptions, setCategoryOptions] = useState([]);
+  const [resultMessage, setResultMessage] = useState("");
 
-  const { response, error, loading } = useAxios({
+  const {
+    response: categories,
+    error,
+    loading,
+  } = useAxios({
     method: "GET",
     url: "/boardCategories",
   });
 
   useEffect(() => {
-    if (response) {
-      setCategoryOptions(response.sort((a, b) => a.topic > b.topic));
+    if (categories) {
+      setCategoryOptions(categories.sort((a, b) => a.topic > b.topic));
     }
-  }, [response]);
+  }, [categories]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    createBoard(topic, description, category).then((response) => {
+      if (response.status === 201) {
+        setResultMessage("Successfully created board.");
+      } else {
+        setResultMessage(response.data.message);
+      }
+    });
+
+    setTopic("");
+    setDescription("");
+    setCategory("");
+  };
 
   return (
     <>
@@ -39,7 +62,11 @@ const CreateBoardForm = () => {
       ) : (
         <Box>
           {error && error.message}
-          <S.Form autoComplete="off" data-testid="create-board-form">
+          <S.Form
+            autoComplete="off"
+            data-testid="create-board-form"
+            onSubmit={handleSubmit}
+          >
             <TextField
               id="topic"
               type="text"
@@ -93,6 +120,11 @@ const CreateBoardForm = () => {
               Submit
             </Button>
           </S.Form>
+          {resultMessage && (
+            <Typography variant="p" component="p">
+              {resultMessage}
+            </Typography>
+          )}
         </Box>
       )}
     </>
