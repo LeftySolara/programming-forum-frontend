@@ -2,14 +2,29 @@ import React, { useState } from "react";
 
 import { Box, Button, TextField, Typography } from "@mui/material";
 
+import registerUser from "api/services/auth";
+
 const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    registerUser(username, email, password, confirmPassword)
+      .then(() => {
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
   };
 
   return (
@@ -65,6 +80,7 @@ const SignupForm = () => {
           Submit
         </Button>
       </form>
+      {error && error}
     </Box>
   );
 };
