@@ -21,7 +21,6 @@ const CreateBoardForm = () => {
   const [topic, setTopic] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [categoryOptions, setCategoryOptions] = useState([]);
   const [resultMessage, setResultMessage] = useState("");
 
   const {
@@ -35,7 +34,7 @@ const CreateBoardForm = () => {
 
   useEffect(() => {
     if (categories) {
-      setCategoryOptions(categories.sort((a, b) => a.topic > b.topic));
+      categories.sort((a, b) => a.topic > b.topic);
     }
   }, [categories]);
 
@@ -57,7 +56,7 @@ const CreateBoardForm = () => {
 
   return (
     <>
-      {loading ? (
+      {loading || categories === null ? (
         <CircularProgress />
       ) : (
         <Box>
@@ -108,7 +107,7 @@ const CreateBoardForm = () => {
                   }}
                   required
                 >
-                  {categoryOptions.map((option) => (
+                  {categories.map((option) => (
                     <MenuItem value={option._id} key={option._id}>
                       {option.topic}
                     </MenuItem>
