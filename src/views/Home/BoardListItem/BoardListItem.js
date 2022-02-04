@@ -15,7 +15,15 @@ const BoardListItem = (props) => {
 
   return (
     <S.Li key={id}>
-      <S.StyledLink to={`/board/${topic.replaceAll(" ", "_").toLowerCase()}`}>
+      <S.StyledLink
+        to={`/board/${topic
+          .replaceAll(" ", "_")
+          .replaceAll(",", "")
+          .replaceAll("C++", "cpp")
+          .replaceAll("C#", "cs")
+          .replaceAll("_and_", "_")
+          .toLowerCase()}`}
+      >
         <Typography variant="link" component="h3">
           {topic}
         </Typography>
