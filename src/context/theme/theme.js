@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import { blue } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
@@ -14,6 +15,11 @@ const theme = createTheme({
     },
     warning: {
       main: "#fd7d0d",
+    },
+  },
+  typography: {
+    link: {
+      color: blue[500],
     },
   },
 });

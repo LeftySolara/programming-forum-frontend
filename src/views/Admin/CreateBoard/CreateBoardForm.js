@@ -13,7 +13,7 @@ import {
 import { Box } from "@mui/system";
 
 import useAxios from "hooks/useAxios";
-import createBoard from "api/services/board";
+import { createBoard } from "api/services/board";
 
 import * as S from "./CreateBoardForm.styles";
 

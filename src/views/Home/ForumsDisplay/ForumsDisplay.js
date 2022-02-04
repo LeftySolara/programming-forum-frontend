@@ -5,7 +5,7 @@ const ForumsDisplay = (props) => {
   const { children } = props;
 
   return (
-    <Paper elevation={0} sx={{ width: "80%", border: "2px solid black" }}>
+    <Paper elevation={6} sx={{ width: "80%" }}>
       {children}
     </Paper>
   );
