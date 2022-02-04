@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import useAxios from "hooks/useAxios";
 import { getBoardsByCategory } from "api/services/board";
+
 import { CircularProgress } from "@mui/material";
+
+import BoardListItem from "../BoardListItem/BoardListItem";
 
 const BoardCategoryList = () => {
   const [boardMaps, setBoardMaps] = useState([]);
@@ -43,9 +46,11 @@ const BoardCategoryList = () => {
                   <h2>{map.category.topic}</h2>
                   <ul>
                     {map.boards.map((board) => (
-                      <li key={board._id}>
-                        {board.topic} ({board.description})
-                      </li>
+                      <BoardListItem
+                        id={board._id}
+                        topic={board.topic}
+                        description={board.description}
+                      />
                     ))}
                   </ul>
                 </div>
