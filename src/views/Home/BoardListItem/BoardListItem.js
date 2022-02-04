@@ -13,7 +13,7 @@ const BoardListItem = (props) => {
 
   return (
     <li key={id}>
-      <Typography variant="h3" component="h3">
+      <Typography variant="h4" component="h3">
         {topic}
       </Typography>
       <Typography variant="p" component="p">

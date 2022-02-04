@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import useAxios from "hooks/useAxios";
 import { getBoardsByCategory } from "api/services/board";
 
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 
 import BoardList from "../BoardList/BoardList";
 
@@ -42,10 +42,13 @@ const BoardCategoryList = () => {
           {boardMaps &&
             boardMaps.map((map) => {
               return (
-                <div key={map.category._id}>
-                  <h2>{map.category.topic}</h2>
+                <>
+                  <Typography variant="h3" component="h2">
+                    {map.category.topic}
+                  </Typography>
+                  <hr />
                   <BoardList boards={map.boards} />
-                </div>
+                </>
               );
             })}
         </div>
