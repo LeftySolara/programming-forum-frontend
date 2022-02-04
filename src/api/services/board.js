@@ -11,7 +11,6 @@ const getBoardsByCategory = (categoryId) => {
   return axiosClient
     .get(`/boards/category/${categoryId}`)
     .then((res) => {
-      console.log(res);
       return res;
     })
     .catch((err) => {
