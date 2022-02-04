@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-import { Link } from "react-router-dom";
+import * as S from "./BoardListItem.styles";
 
 /**
  * Displays a board's topic and description.
@@ -14,16 +14,16 @@ const BoardListItem = (props) => {
   const { id, topic, description } = props;
 
   return (
-    <li key={id}>
-      <Link to={`/board/${topic.replaceAll(" ", "_").toLowerCase()}`}>
-        <Typography variant="h4" component="h3">
+    <S.Li key={id}>
+      <S.StyledLink to={`/board/${topic.replaceAll(" ", "_").toLowerCase()}`}>
+        <Typography variant="link" component="h3">
           {topic}
         </Typography>
-      </Link>
-      <Typography variant="p" component="p">
+      </S.StyledLink>
+      <Typography variant="body1" component="p">
         {description}
       </Typography>
-    </li>
+    </S.Li>
   );
 };
 
