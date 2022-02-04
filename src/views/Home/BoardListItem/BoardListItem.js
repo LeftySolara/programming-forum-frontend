@@ -1,6 +1,8 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 /**
  * Displays a board's topic and description.
  *
@@ -13,9 +15,11 @@ const BoardListItem = (props) => {
 
   return (
     <li key={id}>
-      <Typography variant="h4" component="h3">
-        {topic}
-      </Typography>
+      <Link to={`/board/${topic.replaceAll(" ", "_").toLowerCase()}`}>
+        <Typography variant="h4" component="h3">
+          {topic}
+        </Typography>
+      </Link>
       <Typography variant="p" component="p">
         {description}
       </Typography>

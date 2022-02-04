@@ -1,7 +1,8 @@
 import React from "react";
 
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import renderWithRouter from "utils/testing/render";
 
 import BoardList from "./BoardList";
 
@@ -12,7 +13,7 @@ describe("The board list", () => {
       { _id: "2", topic: "Second", description: "The second board" },
     ];
 
-    render(<BoardList boards={boards} />);
+    renderWithRouter(<BoardList boards={boards} />);
 
     expect(screen.getByText("First")).toBeInTheDocument();
     expect(screen.getByText("The first board")).toBeInTheDocument();

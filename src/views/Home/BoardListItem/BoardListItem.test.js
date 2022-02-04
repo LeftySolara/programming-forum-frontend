@@ -1,7 +1,8 @@
 import React from "react";
 
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import renderWithRouter from "utils/testing/render";
 
 import BoardListItem from "./BoardListItem";
 
@@ -10,7 +11,7 @@ describe("The board list item", () => {
     const topicString = "Example";
     const descriptionString = "This is a test";
 
-    render(
+    renderWithRouter(
       <BoardListItem
         id="123"
         topic={topicString}
