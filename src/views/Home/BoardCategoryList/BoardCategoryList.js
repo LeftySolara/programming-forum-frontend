@@ -43,7 +43,7 @@ const BoardCategoryList = () => {
             boardMaps.map((map) => {
               return (
                 <>
-                  <Typography variant="h3" component="h2">
+                  <Typography variant="h5" component="h2">
                     {map.category.topic}
                   </Typography>
                   <hr />
