@@ -5,7 +5,7 @@ import { getBoardsByCategory } from "api/services/board";
 
 import { CircularProgress } from "@mui/material";
 
-import BoardListItem from "../BoardListItem/BoardListItem";
+import BoardList from "../BoardList/BoardList";
 
 const BoardCategoryList = () => {
   const [boardMaps, setBoardMaps] = useState([]);
@@ -44,15 +44,7 @@ const BoardCategoryList = () => {
               return (
                 <div key={map.category._id}>
                   <h2>{map.category.topic}</h2>
-                  <ul>
-                    {map.boards.map((board) => (
-                      <BoardListItem
-                        id={board._id}
-                        topic={board.topic}
-                        description={board.description}
-                      />
-                    ))}
-                  </ul>
+                  <BoardList boards={map.boards} />
                 </div>
               );
             })}
