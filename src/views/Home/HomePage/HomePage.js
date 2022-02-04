@@ -1,6 +1,6 @@
 import React from "react";
 
-import BoardCategoryList from "components/BoardCategoryList/BoardCategoryList";
+import BoardCategoryList from "views/Home/BoardCategoryList/BoardCategoryList";
 import ForumsDisplay from "views/Home/ForumsDisplay/ForumsDisplay";
 
 const HomePage = () => {
