@@ -7,10 +7,10 @@ const getBoardCategories = () => {
     .catch((err) => err);
 };
 
-const createBoardCategory = (topic) => {
+const createBoardCategory = (topic, sortOrder) => {
   // TODO: implement actual error handling
   axiosClient
-    .post("/boardCategories", { topic })
+    .post("/boardCategories", { topic, sortOrder })
     .catch((err) => console.log(err));
 };
 
