@@ -12,9 +12,10 @@ const CreateBoardCategoryForm = (props) => {
   const { onSubmit } = props;
 
   const [topic, setTopic] = useState("");
+  const [sortOrder, setSortOrder] = useState(0);
 
   const handleSubmit = (event) => {
-    onSubmit(topic);
+    onSubmit(topic, sortOrder);
     setTopic("");
     event.preventDefault();
   };
@@ -36,6 +37,17 @@ const CreateBoardCategoryForm = (props) => {
         value={topic}
         onChange={(e) => setTopic(e.target.value)}
         inputProps={{ "data-testid": "topic", "aria-required": "true" }}
+      />
+      <TextField
+        id="sort-order"
+        type="number"
+        label="Sort Order"
+        name="sort-order"
+        variant="outlined"
+        required
+        value={sortOrder}
+        onChange={(e) => setSortOrder(e.target.value)}
+        inputProps={{ "data-testid": "sort-order", "aria-required": "true" }}
       />
       <Button type="submit" variant="contained" sx={{ width: "20%" }}>
         Submit
