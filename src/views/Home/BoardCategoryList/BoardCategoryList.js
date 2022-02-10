@@ -40,17 +40,22 @@ const BoardCategoryList = () => {
         <div>
           {error && error.message}
           {boardMaps &&
-            boardMaps.map((map) => {
-              return (
-                <>
-                  <Typography variant="h5" component="h2">
-                    {map.category.topic}
-                  </Typography>
-                  <hr />
-                  <BoardList boards={map.boards} />
-                </>
-              );
-            })}
+            boardMaps
+              .sort(
+                (map1, map2) =>
+                  map1.category.sortOrder > map2.category.sortOrder,
+              )
+              .map((map) => {
+                return (
+                  <>
+                    <Typography variant="h5" component="h2">
+                      {map.category.topic}
+                    </Typography>
+                    <hr />
+                    <BoardList boards={map.boards} />
+                  </>
+                );
+              })}
         </div>
       )}
     </div>
