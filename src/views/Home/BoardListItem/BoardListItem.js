@@ -16,7 +16,7 @@ const BoardListItem = (props) => {
   return (
     <S.Li key={id}>
       <S.StyledLink
-        to={`/board/${topic
+        to={`/board/${id
           .replaceAll(" ", "_")
           .replaceAll(",", "")
           .replaceAll("C++", "cpp")
