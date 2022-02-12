@@ -1,6 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { CircularProgress, Typography } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
+import { Button, CircularProgress, Typography } from "@mui/material";
 
 import useAxios from "hooks/useAxios";
 
@@ -18,6 +18,11 @@ const BoardPage = () => {
         <CircularProgress />
       ) : (
         <div>
+          <Link to={`/board/${id}/post-thread`}>
+            <Button variant="contained" type="button">
+              Post New Thread
+            </Button>
+          </Link>
           {error && error.message}
           <Typography variant="h3" component="h1">
             {response.board.topic}
