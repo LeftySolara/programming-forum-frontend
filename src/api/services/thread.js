@@ -10,7 +10,7 @@ import createPost from "./post";
  */
 const createThread = (topic, content, boardId) => {
   // Placeholder until user authentication is implemented
-  const authorId = "620be94434d792544871aa8d";
+  const authorId = "620c11ef46d381e90e7bba37";
 
   return axiosClient
     .post("/threads", { authorId, boardId, topic })
