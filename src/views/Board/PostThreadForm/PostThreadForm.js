@@ -1,12 +1,26 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
+import { useParams } from "react-router-dom";
+
+import createThread from "api/services/thread";
 
 const PostThreadForm = () => {
   const [topic, setTopic] = useState("");
   const [content, setContent] = useState("");
 
+  // The id of the board to post to
+  const { id: boardId } = useParams();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    createThread(topic, boardId);
+
+    setTopic("");
+    setContent("");
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <TextField
         id="topic"
         type="text"
