@@ -1,7 +1,10 @@
+import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
-import React from "react";
 
 const PostThreadForm = () => {
+  const [topic, setTopic] = useState("");
+  const [content, setContent] = useState("");
+
   return (
     <form>
       <TextField
@@ -12,6 +15,8 @@ const PostThreadForm = () => {
         variant="outlined"
         required
         inputProps={{ "data-testid": "topic", "aria-required": "true" }}
+        value={topic}
+        onChange={(e) => setTopic(e.target.value)}
       />
       <TextField
         id="content"
@@ -21,6 +26,8 @@ const PostThreadForm = () => {
         required
         multiline
         inputProps={{ "data-testid": "content", "aria-required": "true" }}
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
       />
       <Button type="submit" variant="contained">
         Submit
