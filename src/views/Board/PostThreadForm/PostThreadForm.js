@@ -13,7 +13,7 @@ const PostThreadForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createThread(topic, boardId);
+    createThread(topic, content, boardId);
 
     setTopic("");
     setContent("");
