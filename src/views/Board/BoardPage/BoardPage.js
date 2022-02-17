@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Button, CircularProgress, Typography } from "@mui/material";
 
 import useAxios from "hooks/useAxios";
+import ThreadList from "../ThreadList/ThreadList";
 
 const BoardPage = () => {
   const { id } = useParams();
@@ -27,6 +28,7 @@ const BoardPage = () => {
           <Typography variant="h3" component="h1">
             {response.board.topic}
           </Typography>
+          <ThreadList />
         </div>
       )}
     </div>
