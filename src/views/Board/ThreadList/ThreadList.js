@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 
 import useAxios from "hooks/useAxios";
+import ThreadListItem from "../ThreadListItem/ThreadListItem";
 
 const ThreadList = () => {
   const [threads, setThreads] = useState([]);
@@ -33,7 +34,10 @@ const ThreadList = () => {
       ) : (
         <div>
           {error && error.message}
-          {threads && threads.map((thread) => <p>{thread.topic}</p>)}
+          <ul>
+            {threads &&
+              threads.map((thread) => <ThreadListItem topic={thread.topic} />)}
+          </ul>
         </div>
       )}
     </div>
