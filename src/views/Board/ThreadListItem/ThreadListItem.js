@@ -1,9 +1,21 @@
 import React from "react";
 
-const ThreadListItem = (props) => {
-  const { topic } = props;
+import { Card, Typography } from "@mui/material";
 
-  return <li>{topic}</li>;
+import * as S from "./ThreadListItem.styles";
+
+const ThreadListItem = (props) => {
+  const { id, topic } = props;
+
+  return (
+    <li>
+      <Card sx={{ marginTop: "20px" }}>
+        <Typography variant="h5" component="p">
+          <S.StyledLink to={`/thread/${id}`}>{topic}</S.StyledLink>
+        </Typography>
+      </Card>
+    </li>
+  );
 };
 
 export default ThreadListItem;
