@@ -38,6 +38,7 @@ const PostList = (props) => {
                   content={post.content}
                   author={post.author.username}
                   date={post.dateCreated}
+                  key={post.dateCreated}
                 />
               ))}
           </ul>
