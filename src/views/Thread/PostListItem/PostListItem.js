@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Typography } from "@mui/material";
+
 import moment from "moment";
 
 import * as S from "./PostListItem.styles";
@@ -10,8 +12,16 @@ const PostListItem = (props) => {
   const formattedDate = moment(date).format("YYYY-MM-DD HH:mm:ss");
 
   return (
-    <S.ListItem key={date}>
-      [{formattedDate}] {author}: {content}
+    <S.ListItem>
+      <S.Header>
+        <Typography variant="body1" component="p">
+          {author}
+        </Typography>
+        <Typography variant="body1" component="p">
+          {formattedDate}
+        </Typography>
+      </S.Header>
+      {content}
     </S.ListItem>
   );
 };
