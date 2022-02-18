@@ -5,6 +5,8 @@ import { CircularProgress, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import useAxios from "hooks/useAxios";
 
+import PostList from "../PostList/PostList";
+
 const ThreadPage = () => {
   const { id } = useParams();
 
@@ -23,6 +25,7 @@ const ThreadPage = () => {
           <Typography variant="h3" component="h3">
             {response.thread.topic}
           </Typography>
+          <PostList threadId={id} />
         </div>
       )}
     </div>
