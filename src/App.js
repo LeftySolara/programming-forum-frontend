@@ -9,6 +9,7 @@ import "@fontsource/roboto/700.css";
 import { ThemeProvider } from "@mui/material";
 
 import BoardPage from "views/Board/BoardPage/BoardPage";
+import ThreadPage from "views/Thread/ThreadPage/ThreadPage";
 import PostThreadPage from "views/Board/PostThreadPage/PostThreadPage";
 import HomePage from "./views/Home/HomePage/HomePage";
 import LoginPage from "./views/Auth/Login/LoginPage/LoginPage";
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/signup" component={SignupPage} />
           <Route path="/board/:id/post-thread" component={PostThreadPage} />
           <Route path="/board/:id" component={BoardPage} />
+          <Route path="/thread/:id" component={ThreadPage} />
           <Route
             path="/admin/boardCategory/create"
             component={CreateBoardCategoryPage}
