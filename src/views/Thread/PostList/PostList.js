@@ -51,7 +51,7 @@ const PostList = (props) => {
           </S.PostListContainer>
           <S.PostListContainer>
             <Paper elevation={3} sx={{ width: "98%", marginTop: "30px" }}>
-              <ReplyForm />
+              <ReplyForm threadId={threadId} />
             </Paper>
           </S.PostListContainer>
         </>
