@@ -5,6 +5,7 @@ import { CircularProgress, Paper } from "@mui/material";
 import useAxios from "hooks/useAxios";
 
 import PostListItem from "../PostListItem/PostListItem";
+import ReplyForm from "../ReplyForm/ReplyForm";
 
 import * as S from "./PostList.styles";
 
@@ -31,22 +32,29 @@ const PostList = (props) => {
       {loading || posts.length === 0 ? (
         <CircularProgress />
       ) : (
-        <S.PostListContainer>
-          {error && error.message}
-          <Paper elevation={3} sx={{ width: "98%" }}>
-            <S.List>
-              {posts &&
-                posts.map((post) => (
-                  <PostListItem
-                    content={post.content}
-                    author={post.author.username}
-                    date={post.dateCreated}
-                    key={post.dateCreated}
-                  />
-                ))}
-            </S.List>
-          </Paper>
-        </S.PostListContainer>
+        <>
+          <S.PostListContainer>
+            {error && error.message}
+            <Paper elevation={3} sx={{ width: "98%" }}>
+              <S.List>
+                {posts &&
+                  posts.map((post) => (
+                    <PostListItem
+                      content={post.content}
+                      author={post.author.username}
+                      date={post.dateCreated}
+                      key={post.dateCreated}
+                    />
+                  ))}
+              </S.List>
+            </Paper>
+          </S.PostListContainer>
+          <S.PostListContainer>
+            <Paper elevation={3} sx={{ width: "98%", marginTop: "30px" }}>
+              <ReplyForm />
+            </Paper>
+          </S.PostListContainer>
+        </>
       )}
     </div>
   );
