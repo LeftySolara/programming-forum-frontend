@@ -16,6 +16,11 @@ const SignupForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
     registerUser(username, email, password, confirmPassword)
       .then(() => {
         setUsername("");

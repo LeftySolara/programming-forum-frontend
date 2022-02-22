@@ -12,7 +12,7 @@ import axiosClient from "api/axios";
  */
 const registerUser = (username, email, password, confirmPassword) => {
   return axiosClient
-    .post("/auth/register", {
+    .post("/users", {
       username,
       email,
       password,
