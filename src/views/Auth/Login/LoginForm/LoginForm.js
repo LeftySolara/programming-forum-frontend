@@ -2,14 +2,29 @@ import React, { useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
+import { loginUser } from "api/services/auth";
+
 import * as S from "./LoginForm.styles";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    loginUser(email, password)
+      .then(() => {
+        setEmail("");
+        setPassword("");
+        setError("");
+      })
+      .catch(() => {
+        setError("Incorrect email or password. Please try again.");
+      });
+
+    // TODO: redirect to homepage
   };
 
   return (
@@ -42,6 +57,7 @@ const LoginForm = () => {
           Submit
         </Button>
       </S.Form>
+      {error && error}
     </Box>
   );
 };
