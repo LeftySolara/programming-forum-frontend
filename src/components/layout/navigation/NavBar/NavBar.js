@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useWindowWidth } from "@react-hook/window-size";
+
+import AuthContext from "context/auth/auth-context";
 
 import {
   AppBar,
@@ -24,16 +26,26 @@ import * as S from "./NavBar.styles";
  * @returns A responsive navigation bar component.
  */
 const NavBar = () => {
+  const auth = useContext(AuthContext);
+
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   const windowWidth = useWindowWidth();
   const isMobile = windowWidth < 768;
 
-  const navBarLinks = (
+  const authLinks = (
+    <>
+      <NavBarLink primary="Logout" to="/" handleClick={auth.logout} />
+    </>
+  );
+
+  const nonAuthLinks = (
     <>
       <NavBarLink primary="Sign Up" to="/signup" />
       <NavBarLink primary="Log In" to="/login" />
     </>
   );
+
+  const navBarLinks = auth.isLoggedIn ? authLinks : nonAuthLinks;
 
   const drawer = (
     <div>

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { Button, TextField, Typography } from "@mui/material";
 import { ReplyOutlined } from "@mui/icons-material";
 import createPost from "api/services/post";
 
+import AuthContext from "context/auth/auth-context";
+
 const ReplyForm = (props) => {
   const { threadId } = props;
   const [content, setContent] = useState("");
+
+  const auth = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,9 +19,9 @@ const ReplyForm = (props) => {
     }
 
     /* TODO: remove placeholder user once auth is implemented */
-    createPost("620c11ef46d381e90e7bba37", threadId, content);
+    createPost(auth.userId, threadId, content, auth.token);
     setContent("");
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (

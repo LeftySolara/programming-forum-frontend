@@ -1,12 +1,16 @@
 import axiosClient from "api/axios";
 
-const createPost = (authorId, threadId, content) => {
+const createPost = (authorId, threadId, content, token) => {
   return axiosClient
-    .post("/posts", {
-      authorId,
-      threadId,
-      content,
-    })
+    .post(
+      "/posts",
+      {
+        authorId,
+        threadId,
+        content,
+      },
+      { headers: { Authorization: `Bearer ${token}` } },
+    )
     .then((res) => {
       return res;
     })

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useContext, useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
+import AuthContext from "context/auth/auth-context";
 import { useHistory } from "react-router-dom";
 import { loginUser } from "api/services/auth";
 
@@ -13,15 +15,17 @@ const LoginForm = () => {
   const [error, setError] = useState("");
 
   const history = useHistory();
+  const auth = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     loginUser(email, password)
-      .then(() => {
+      .then((response) => {
         setEmail("");
         setPassword("");
         setError("");
+        auth.login(response.data.userId, response.data.token);
         history.push("/");
       })
       .catch(() => {
