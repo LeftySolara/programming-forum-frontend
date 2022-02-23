@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
+import { useHistory } from "react-router-dom";
 import { loginUser } from "api/services/auth";
 
 import * as S from "./LoginForm.styles";
@@ -11,6 +12,8 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const history = useHistory();
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -19,12 +22,11 @@ const LoginForm = () => {
         setEmail("");
         setPassword("");
         setError("");
+        history.push("/");
       })
       .catch(() => {
         setError("Incorrect email or password. Please try again.");
       });
-
-    // TODO: redirect to homepage
   };
 
   return (
