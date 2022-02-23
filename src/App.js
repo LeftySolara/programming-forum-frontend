@@ -26,15 +26,18 @@ import NavBar from "./components/layout/navigation/NavBar/NavBar";
 const App = () => {
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [username, setUsername] = useState(null);
 
-  const login = useCallback((uid, utoken) => {
+  const login = useCallback((uid, utoken, uname) => {
     setToken(utoken);
     setUserId(uid);
+    setUsername(uname);
   }, []);
 
   const logout = useCallback(() => {
     setToken(null);
     setUserId(null);
+    setUsername(null);
   }, []);
 
   let routes;
@@ -69,7 +72,7 @@ const App = () => {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn: !!token, token, userId, login, logout }}
+      value={{ isLoggedIn: !!token, token, userId, username, login, logout }}
     >
       <BrowserRouter>
         <ThemeProvider theme={theme}>

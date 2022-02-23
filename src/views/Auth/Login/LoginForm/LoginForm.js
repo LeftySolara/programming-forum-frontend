@@ -25,7 +25,11 @@ const LoginForm = () => {
         setEmail("");
         setPassword("");
         setError("");
-        auth.login(response.data.userId, response.data.token);
+        auth.login(
+          response.data.userId,
+          response.data.token,
+          response.data.username,
+        );
         history.push("/");
       })
       .catch(() => {
