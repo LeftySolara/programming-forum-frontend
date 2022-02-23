@@ -34,6 +34,10 @@ const NavBar = () => {
 
   const authLinks = (
     <>
+      <NavBarLink
+        primary={`${auth.username}`}
+        to={`/profile/${auth.username}`}
+      />
       <NavBarLink primary="Logout" to="/" handleClick={auth.logout} />
     </>
   );
