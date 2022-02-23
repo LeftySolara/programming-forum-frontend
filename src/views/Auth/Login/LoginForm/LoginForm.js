@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 import * as S from "./LoginForm.styles";
 
 const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
-    console.log("submitted");
     event.preventDefault();
   };
 
@@ -23,6 +25,8 @@ const LoginForm = () => {
           variant="standard"
           required
           inputProps={{ "data-testid": "email", "aria-required": "true" }}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           type="password"
@@ -31,6 +35,8 @@ const LoginForm = () => {
           variant="standard"
           required
           inputProps={{ "data-testid": "password", "aria-required": "true" }}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Button type="submit" variant="contained" sx={{ width: "20%" }}>
           Submit
