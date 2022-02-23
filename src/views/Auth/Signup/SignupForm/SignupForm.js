@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Box, Button, TextField, Typography } from "@mui/material";
 
-import registerUser from "api/services/auth";
+import { registerUser } from "api/services/auth";
 
 import * as S from "./SignupForm.styles";
 
