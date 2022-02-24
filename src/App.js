@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "@fontsource/roboto/300.css";
@@ -32,13 +32,25 @@ const App = () => {
     setToken(utoken);
     setUserId(uid);
     setUsername(uname);
+    localStorage.setItem(
+      "userData",
+      JSON.stringify({ userId: uid, token: utoken, username: uname }),
+    );
   }, []);
 
   const logout = useCallback(() => {
     setToken(null);
     setUserId(null);
     setUsername(null);
+    localStorage.removeItem("userData");
   }, []);
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+    if (storedData && storedData.token) {
+      login(storedData.userID, storedData.token, storedData.username);
+    }
+  }, [login]);
 
   let routes;
 
