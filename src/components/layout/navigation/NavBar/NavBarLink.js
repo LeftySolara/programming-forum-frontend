@@ -13,7 +13,7 @@ import { ListItem, ListItemText } from "@mui/material";
  * @returns A ListItem that renders a link with the given text and path.
  */
 const NavBarLink = (props) => {
-  const { primary, to } = props;
+  const { primary, to, handleClick } = props;
 
   const renderLink = useMemo(
     () =>
@@ -25,7 +25,7 @@ const NavBarLink = (props) => {
   );
 
   return (
-    <ListItem button component={renderLink}>
+    <ListItem button component={renderLink} onClick={handleClick}>
       <ListItemText primary={primary} />
     </ListItem>
   );

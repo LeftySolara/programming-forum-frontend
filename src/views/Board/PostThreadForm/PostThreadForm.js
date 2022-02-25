@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { useParams } from "react-router-dom";
 
+import AuthContext from "context/auth/auth-context";
 import createThread from "api/services/thread";
 
 const PostThreadForm = () => {
   const [topic, setTopic] = useState("");
   const [content, setContent] = useState("");
 
+  const auth = useContext(AuthContext);
+
   // The id of the board to post to
   const { id: boardId } = useParams();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createThread(topic, content, boardId);
+    createThread(auth.userId, topic, content, boardId, auth.token);
 
     setTopic("");
     setContent("");

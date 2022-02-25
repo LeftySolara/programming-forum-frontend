@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Box, Button, TextField, Typography } from "@mui/material";
 
-import registerUser from "api/services/auth";
+import { registerUser } from "api/services/auth";
 
 import * as S from "./SignupForm.styles";
 
@@ -15,6 +15,11 @@ const SignupForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
 
     registerUser(username, email, password, confirmPassword)
       .then(() => {

@@ -12,7 +12,7 @@ import axiosClient from "api/axios";
  */
 const registerUser = (username, email, password, confirmPassword) => {
   return axiosClient
-    .post("/auth/register", {
+    .post("/users", {
       username,
       email,
       password,
@@ -26,4 +26,26 @@ const registerUser = (username, email, password, confirmPassword) => {
     });
 };
 
-export default registerUser;
+/**
+ * Sends a POST request to log in a user.
+ *
+ * @param {String} email The user's email address.
+ * @param {String} password The user's password.
+ *
+ * @returns {Object} An HTTP response object.
+ */
+const loginUser = (email, password) => {
+  return axiosClient
+    .post("/auth/login", {
+      email,
+      password,
+    })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      throw new Error(err.message);
+    });
+};
+
+export { registerUser, loginUser };
