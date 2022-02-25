@@ -6,9 +6,7 @@ const StyledLink = styled(Link)`
   color: inherit;
 `;
 
-const Container = styled.div`
-  padding: 20px;
-`;
+const Container = styled.div``;
 
 // eslint-disable-next-line import/prefer-default-export
 export { StyledLink, Container };
