@@ -18,10 +18,9 @@ const ReplyForm = (props) => {
       return;
     }
 
-    /* TODO: remove placeholder user once auth is implemented */
     createPost(auth.userId, threadId, content, auth.token);
     setContent("");
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (
