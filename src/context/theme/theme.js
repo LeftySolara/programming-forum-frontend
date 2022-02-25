@@ -16,6 +16,7 @@ const theme = createTheme({
     warning: {
       main: "#fd7d0d",
     },
+    seperator: "#ececec",
   },
   typography: {
     link: {
