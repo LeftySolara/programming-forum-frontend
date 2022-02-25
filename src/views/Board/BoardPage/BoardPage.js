@@ -5,6 +5,8 @@ import { Button, CircularProgress, Typography } from "@mui/material";
 import useAxios from "hooks/useAxios";
 import ThreadList from "../ThreadList/ThreadList";
 
+import BoardBreadcrums from "../Breadcrumbs/Breadcrumbs";
+
 const BoardPage = () => {
   const { id } = useParams();
 
@@ -19,6 +21,7 @@ const BoardPage = () => {
         <CircularProgress />
       ) : (
         <div>
+          <BoardBreadcrums location={response.board.topic} id={id} />
           <Link to={`/board/${id}/post-thread`}>
             <Button variant="contained" type="button">
               Post New Thread
