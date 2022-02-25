@@ -67,7 +67,7 @@ const NavBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CssBaseline />
-      <AppBar position="sticky">
+      <AppBar position="sticky" elevation={0}>
         <Toolbar>
           {isMobile && (
             <IconButton

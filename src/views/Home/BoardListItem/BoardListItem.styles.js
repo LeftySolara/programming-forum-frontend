@@ -7,7 +7,9 @@ const StyledLink = styled(Link)`
 `;
 
 const Li = styled.li`
-  margin-top: 20px;
+  width: 100%;
+  padding: 10px 0px 10px 0px;
+  border-bottom: 2px solid ${({ theme }) => theme.palette.seperator};
 `;
 
 // eslint-disable-next-line import/prefer-default-export

@@ -1,16 +1,14 @@
 import React from "react";
 
 import BoardCategoryList from "views/Home/BoardCategoryList/BoardCategoryList";
-import ForumsDisplay from "views/Home/ForumsDisplay/ForumsDisplay";
+
+import * as S from "./HomePage.styles";
 
 const HomePage = () => {
   return (
-    <>
-      <h1>Home</h1>
-      <ForumsDisplay>
-        <BoardCategoryList />
-      </ForumsDisplay>
-    </>
+    <S.PageContainer>
+      <BoardCategoryList />
+    </S.PageContainer>
   );
 };
 
