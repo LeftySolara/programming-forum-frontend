@@ -31,11 +31,12 @@ const ThreadList = () => {
 
   return (
     <div>
-      {loading || threads.length === 0 ? (
+      {loading ? (
         <CircularProgress />
       ) : (
         <div>
           {error && error.message}
+          {threads.length === 0 && "No threads found"}
           <S.List>
             {threads &&
               threads.map((thread) => (
