@@ -16,6 +16,7 @@ const theme = createTheme({
     warning: {
       main: "#fd7d0d",
     },
+    background: "#ececec",
     seperator: "#ececec",
   },
   typography: {

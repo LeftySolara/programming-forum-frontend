@@ -7,6 +7,8 @@ import { CircularProgress, Typography } from "@mui/material";
 
 import BoardList from "../BoardList/BoardList";
 
+import * as S from "./BoardCategoryList.styles";
+
 const BoardCategoryList = () => {
   const [boardMaps, setBoardMaps] = useState([]);
 
@@ -33,7 +35,7 @@ const BoardCategoryList = () => {
   }, [categories]);
 
   return (
-    <div>
+    <S.BoardCategoryListContainer>
       {loading || boardMaps.length === 0 ? (
         <CircularProgress />
       ) : (
@@ -48,7 +50,11 @@ const BoardCategoryList = () => {
               .map((map) => {
                 return (
                   <>
-                    <Typography variant="h5" component="h2">
+                    <Typography
+                      variant="h5"
+                      component="h2"
+                      sx={{ marginTop: "35px" }}
+                    >
                       {map.category.topic}
                     </Typography>
                     <hr />
@@ -58,7 +64,7 @@ const BoardCategoryList = () => {
               })}
         </div>
       )}
-    </div>
+    </S.BoardCategoryListContainer>
   );
 };
 
