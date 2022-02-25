@@ -30,11 +30,11 @@ const ThreadList = () => {
   }, [response]);
 
   return (
-    <div>
+    <S.ListContainer>
       {loading ? (
         <CircularProgress />
       ) : (
-        <div>
+        <>
           {error && error.message}
           {threads.length === 0 && "No threads found"}
           <S.List>
@@ -43,9 +43,9 @@ const ThreadList = () => {
                 <ThreadListItem id={thread.id} topic={thread.topic} />
               ))}
           </S.List>
-        </div>
+        </>
       )}
-    </div>
+    </S.ListContainer>
   );
 };
 
