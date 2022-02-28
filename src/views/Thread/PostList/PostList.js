@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 
 import useAxios from "hooks/useAxios";
+
+import AuthContext from "context/auth/auth-context";
 
 import PostListItem from "../PostListItem/PostListItem";
 import ReplyForm from "../ReplyForm/ReplyForm";
@@ -11,6 +13,8 @@ import * as S from "./PostList.styles";
 
 const PostList = (props) => {
   const { threadId } = props;
+
+  const auth = useContext(AuthContext);
 
   const [posts, setPosts] = useState([]);
 
@@ -47,9 +51,15 @@ const PostList = (props) => {
                 ))}
             </S.List>
           </S.PostListContainer>
-          <S.PostListContainer>
-            <ReplyForm threadId={threadId} />
-          </S.PostListContainer>
+          {auth.isLoggedIn ? (
+            <S.PostListContainer>
+              <ReplyForm threadId={threadId} />
+            </S.PostListContainer>
+          ) : (
+            <Typography variant="body1" component="p">
+              Please log in to post a reply.
+            </Typography>
+          )}
         </>
       )}
     </S.PostListContainer>
