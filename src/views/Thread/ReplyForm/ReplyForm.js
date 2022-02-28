@@ -6,6 +6,8 @@ import createPost from "api/services/post";
 
 import AuthContext from "context/auth/auth-context";
 
+import * as S from "./ReplyForm.styles";
+
 const ReplyForm = (props) => {
   const { threadId } = props;
   const [content, setContent] = useState("");
@@ -24,25 +26,43 @@ const ReplyForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Typography variant="h5" component="h3">
+    <S.Form onSubmit={handleSubmit}>
+      <Typography
+        variant="h5"
+        component="h3"
+        sx={{
+          display: "flex",
+          alignSelf: "flex-start",
+          marginLeft: "30px",
+          marginBottom: "5px",
+        }}
+      >
         Quick Reply
       </Typography>
       <TextField
         multiline
+        minRows={6}
+        maxRows={6}
         placeholder="Write your reply..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
+        sx={{ width: "95%" }}
       />
       <Button
         variant="contained"
         type="submit"
-        sx={{ display: "flex", justifyContent: "space-between" }}
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignSelf: "flex-end",
+          marginRight: "30px",
+          marginTop: "15px",
+        }}
       >
         <ReplyOutlined />
         Post Reply
       </Button>
-    </form>
+    </S.Form>
   );
 };
 
