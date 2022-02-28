@@ -7,6 +7,8 @@ import useAxios from "hooks/useAxios";
 
 import PostList from "../PostList/PostList";
 
+import * as S from "./ThreadPage.styles";
+
 const ThreadPage = () => {
   const { id } = useParams();
 
@@ -16,19 +18,23 @@ const ThreadPage = () => {
   });
 
   return (
-    <div>
+    <S.PageContainer>
       {loading || !response ? (
         <CircularProgress />
       ) : (
-        <div>
+        <>
           {error && error.message}
-          <Typography variant="h3" component="h3">
+          <Typography
+            variant="h4"
+            component="h3"
+            sx={{ margin: "20px 20px 20px 0px" }}
+          >
             {response.thread.topic}
           </Typography>
           <PostList threadId={id} />
-        </div>
+        </>
       )}
-    </div>
+    </S.PageContainer>
   );
 };
 
