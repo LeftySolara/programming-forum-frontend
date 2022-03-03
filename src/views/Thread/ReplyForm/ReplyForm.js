@@ -14,13 +14,13 @@ const ReplyForm = (props) => {
 
   const auth = useContext(AuthContext);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (content === "") {
       return;
     }
 
-    createPost(auth.userId, threadId, content, auth.token);
+    await createPost(auth.userId, threadId, content, auth.token);
     setContent("");
     window.location.reload();
   };
