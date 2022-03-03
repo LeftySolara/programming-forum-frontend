@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
   Button,
@@ -15,6 +15,8 @@ import { Box } from "@mui/system";
 import useAxios from "hooks/useAxios";
 import { createBoard } from "api/services/board";
 
+import AuthContext from "context/auth/auth-context";
+
 import * as S from "./CreateBoardForm.styles";
 
 const CreateBoardForm = () => {
@@ -22,6 +24,8 @@ const CreateBoardForm = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [resultMessage, setResultMessage] = useState("");
+
+  const auth = useContext(AuthContext);
 
   const {
     response: categories,
@@ -41,7 +45,7 @@ const CreateBoardForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    createBoard(topic, description, category).then((response) => {
+    createBoard(topic, description, category, auth.token).then((response) => {
       if (response.status === 201) {
         setResultMessage("Successfully created board.");
       } else {
