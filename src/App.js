@@ -59,7 +59,7 @@ const App = () => {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn: !!token, token, userId, username, login, logout }}
+      value={{ isLoggedIn: !!token, userId, token, username, login, logout }}
     >
       <BrowserRouter>
         <ThemeProvider theme={theme}>
