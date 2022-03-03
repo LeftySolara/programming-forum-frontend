@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import AuthContext from "context/auth/auth-context";
 import createThread from "api/services/thread";
 
+import * as S from "./PostThreadForm.styles";
+
 const PostThreadForm = () => {
   const [topic, setTopic] = useState("");
   const [content, setContent] = useState("");
@@ -23,7 +25,7 @@ const PostThreadForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <S.Form onSubmit={handleSubmit}>
       <TextField
         id="topic"
         type="text"
@@ -34,22 +36,34 @@ const PostThreadForm = () => {
         inputProps={{ "data-testid": "topic", "aria-required": "true" }}
         value={topic}
         onChange={(e) => setTopic(e.target.value)}
+        sx={{ width: "95%" }}
       />
       <TextField
         id="content"
         type="text"
-        label="content"
+        label="Post Content"
         name="content"
         required
         multiline
+        minRows={6}
+        maxRows={6}
         inputProps={{ "data-testid": "content", "aria-required": "true" }}
         value={content}
         onChange={(e) => setContent(e.target.value)}
+        sx={{ width: "95%", marginTop: "20px" }}
       />
-      <Button type="submit" variant="contained">
+      <Button
+        type="submit"
+        variant="contained"
+        sx={{
+          margin: "20px 0px 0px 20px",
+          display: "flex",
+          alignSelf: "flex-start",
+        }}
+      >
         Submit
       </Button>
-    </form>
+    </S.Form>
   );
 };
 
