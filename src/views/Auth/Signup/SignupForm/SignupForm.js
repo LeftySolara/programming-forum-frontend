@@ -27,7 +27,7 @@ const SignupForm = () => {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
-        setError(null);
+        setError("Registration successful! Please log in to begin posting.");
       })
       .catch((err) => {
         setError(err.message);
