@@ -1,5 +1,7 @@
 import { Button, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+
+import AuthContext from "context/auth/auth-context";
 
 import * as S from "./CreateBoardCategoryForm.styles";
 
@@ -10,12 +12,13 @@ import * as S from "./CreateBoardCategoryForm.styles";
  */
 const CreateBoardCategoryForm = (props) => {
   const { onSubmit } = props;
+  const auth = useContext(AuthContext);
 
   const [topic, setTopic] = useState("");
   const [sortOrder, setSortOrder] = useState(0);
 
   const handleSubmit = (event) => {
-    onSubmit(topic, sortOrder);
+    onSubmit(topic, sortOrder, auth.token);
     setTopic("");
     event.preventDefault();
   };
